@@ -12,7 +12,7 @@ export const axiosConfig = {
     Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
   },
 };
-export const newMovies = async (newQuery: string): Promise<Movie[]> => {
+export const getMovies = async (newQuery: string): Promise<Movie[]> => {
   const res = await axios.get<GetMovieRes>(
     `${axiosConfig.url}?query=${newQuery}`,
     axiosConfig

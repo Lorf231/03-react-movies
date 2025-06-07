@@ -1,4 +1,5 @@
 import styles from "./SearchBar.module.css";
+import toast, { Toaster } from "react-hot-toast";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -6,10 +7,19 @@ interface SearchBarProps {
 
 export default function SearchBar({ onSearch }: SearchBarProps) {
   const handleSubmit = (formData: FormData) => {
+    if (formData.get("query") === "") {
+      notifyError();
+      return;
+    }
     const query = formData.get("query") as string;
     onSearch(query);
     console.log(query);
   };
+
+  const notifyError = () =>
+    toast.error("Please enter your search query.", {
+      style: { background: "rgba(244, 129, 130, 0.8)" },
+    });
 
   return (
     <>
@@ -35,6 +45,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
             <button className={styles.button} type="submit">
               Search
             </button>
+            <Toaster />
           </form>
         </div>
       </header>
