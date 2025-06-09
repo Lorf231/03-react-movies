@@ -46,7 +46,6 @@ export default function App() {
       setIsLoading(false);
     }
   };
-  console.log(import.meta.env.VITE_API_TOKEN);
 
   return (
     <div className={styles.app}>

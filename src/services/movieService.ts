@@ -12,8 +12,6 @@ export const axiosConfig = {
     Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
   },
 };
-console.log("Environment variables:", import.meta.env);
-console.log("Authorization Header:", axiosConfig.headers.Authorization);
 export const getMovies = async (newQuery: string): Promise<Movie[]> => {
   const res = await axios.get<GetMovieRes>(
     `${axiosConfig.url}?query=${newQuery}`,
