@@ -21,30 +21,32 @@ export default function App() {
       icon: "ℹ️",
     });
 
-    const openModal = (movie: Movie) => {
-      setSelectedMovie(movie);
-    }
+  const openModal = (movie: Movie) => {
+    setSelectedMovie(movie);
+  };
 
-    const closeModal = () => {
-      setSelectedMovie(null);
-    }
+  const closeModal = () => {
+    setSelectedMovie(null);
+  };
 
   const handleSearch = async (topic: string) => {
     try {
       setError(false);
-      setIsLoading(true)
+      setIsLoading(true);
       const newMovie = await getMovies(topic);
-      if (newMovie.length === 0){
+      if (newMovie.length === 0) {
         notifyError();
+      } else {
+        setMovie(newMovie);
       }
     } catch {
       setError(true);
       setMovie([]);
-    }
-    finally{
+    } finally {
       setIsLoading(false);
     }
   };
+  console.log(import.meta.env.VITE_API_TOKEN);
 
   return (
     <div className={styles.app}>
