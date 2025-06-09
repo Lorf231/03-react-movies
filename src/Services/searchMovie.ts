@@ -9,9 +9,10 @@ export const axiosConfig = {
   url: "https://api.themoviedb.org/3/search/movie",
   headers: {
     accept: "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
+    Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
   },
 };
+console.log("Environment variables:", import.meta.env);
 console.log("Authorization Header:", axiosConfig.headers.Authorization);
 export const getMovies = async (newQuery: string): Promise<Movie[]> => {
   const res = await axios.get<GetMovieRes>(
