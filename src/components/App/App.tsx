@@ -49,7 +49,7 @@ export default function App() {
 
   return (
     <div className={styles.app}>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSubmit={handleSearch} />
       <Toaster />
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
