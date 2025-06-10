@@ -31,6 +31,7 @@ export default function App() {
 
   const handleSearch = async (topic: string) => {
     try {
+      setMovie([]);
       setError(false);
       setIsLoading(true);
       const newMovie = await getMovies(topic);
